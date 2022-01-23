@@ -10,37 +10,28 @@ public class MovementControl : MonoBehaviour
     }
     [SerializeField] Controller controllerType;
 
-    List<List<UnityEngine.KeyCode>> controllers;
+    [System.Serializable]
+    public struct controllerInput {
+        public UnityEngine.KeyCode[] keycode;
+    }
+
+    public List<controllerInput> controllerInputs;
 
     // Start is called before the first frame update
     void Start()
     {
-        controllers = new List<List<UnityEngine.KeyCode>>();
-        List<UnityEngine.KeyCode> controller1 = new List<UnityEngine.KeyCode>();
-        controller1.Add(KeyCode.W);
-        controller1.Add(KeyCode.S);
-        controller1.Add(KeyCode.A);
-        controller1.Add(KeyCode.D);
-        controllers.Add(controller1);
-
-        List<UnityEngine.KeyCode> controller2 = new List<UnityEngine.KeyCode>();
-        controller2.Add(KeyCode.UpArrow);
-        controller2.Add(KeyCode.DownArrow);
-        controller2.Add(KeyCode.LeftArrow);
-        controller2.Add(KeyCode.RightArrow);
-        controllers.Add(controller2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        var currentController = controllers[(int)controllerType];
-        if (Input.GetKeyDown(currentController[0]))
+        var currentController = controllerInputs[(int)controllerType];
+        if (Input.GetKeyDown(currentController.keycode[0]))
         {
             Debug.Log("Up is pressed");
         }
 
-        if (Input.GetKeyDown(currentController[1]))
+        if (Input.GetKeyDown(currentController.keycode[1]))
         {
             Debug.Log("Down is pressed");
         }

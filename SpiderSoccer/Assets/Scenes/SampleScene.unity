@@ -156,6 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerType: 1
+  controllerInputs:
+  - keycode: 77000000730000006100000064000000
+  - keycode: 11010000120100001401000013010000
 --- !u!135 &584629411
 SphereCollider:
   m_ObjectHideFlags: 0
